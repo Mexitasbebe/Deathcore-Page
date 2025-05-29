@@ -7,12 +7,24 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- Modal para ver imagen grande -->
+  <div id="modal" class="modal">
+    <span id="closeBtn" class="close-btn">&times;</span>
+    <img class="modal-content" id="modalImg" />
+  </div>
+
   <header>
     <h1>Deathcore Covers & Arte</h1>
     <nav>
       <a href="#galeria">Galería</a>
       <a href="#sobre">Sobre Mí</a>
-      <a href="https://github.com/tuusuario"  target="_blank">GitHub</a>
+      <a href="https://github.com/tuusuario"  target="_blank" class="github-link">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" class="github-icon">
+          <path d="M12 .297c-6.53 0-11.827 5.297-11.827 11.825 0 5.212 3.362 9.648 8.059 11.227.599.11.793-.26.793-.577v-2.144c-3.25.703-3.948-1.562-3.948-1.562-.533-1.352-1.303-1.718-1.303-1.718-1.07-.744.08-.729.08-.729 1.199.084 1.823 1.237 1.823 1.237 1.07 1.835 2.807 1.305 3.492.998.109-.776.418-1.305.762-1.605-2.665-.301-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.222-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.622-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.092 24 17.592 24 12.297c0-6.53-5.297-11.828-11.828-11.828z"/>
+        </svg>
+        Mi GitHub
+      </a>
     </nav>
   </header>
 
@@ -25,11 +37,11 @@
     <h2>Galería de Obras</h2>
     <div class="gallery">
       <div class="artwork">
-        <img src="obra1.jpg" alt="Obra 1">
+        <img src="obra1.jpg" alt="Obra 1" class="gallery-img">
         <p>Portada - "Despair's Embrace"</p>
       </div>
       <div class="artwork">
-        <img src="obra2.jpg" alt="Obra 2">
+        <img src="obra2.jpg" alt="Obra 2" class="gallery-img">
         <p>Logo - "Bleeding Skies"</p>
       </div>
       <!-- Añade más obras aquí -->
@@ -42,7 +54,31 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 Tu Nombre | <a href="https://github.com/tuusuario">GitHub</a></p> 
+    <p>&copy; 2025 Tu Nombre | <a href="https://github.com/tuusuario"  target="_blank">GitHub</a></p>
   </footer>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const closeBtn = document.getElementById("closeBtn");
+    const images = document.querySelectorAll(".gallery-img");
+
+    images.forEach(img => {
+      img.addEventListener("dblclick", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  </script>
 </body>
 </html>
